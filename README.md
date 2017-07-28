@@ -4,6 +4,7 @@
 3. Install TestNG to Eclipse: Eclipse > Help > Eclipse Marketplace > Enter TestNG > Install <br>
 4. Download and install Selenium WebDriver: http://www.seleniumhq.org/download/ <br>
 5. Download and install Appium: http://appium.io/ <br>
+6. Setup PATH
 
 <h2>Create Project</h2>
 1. Create Java project on Eclipse <br>
