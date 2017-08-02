@@ -19,6 +19,9 @@ import org.testng.annotations.Test;
 public class ReadObjectRepository {
 
 	WebDriver driver;
+	File objRepo, dataRepo;
+	FileInputStream fisObject, fisData;
+	Properties proObject, proData;
 
 	@BeforeMethod
 	public void beforeTest() throws MalformedURLException {
@@ -37,29 +40,43 @@ public class ReadObjectRepository {
 
 	@Test
 	public void readObjectToLogin() throws IOException, InterruptedException {
-		File objRepo = new File("ObjectRepository.properties");
-		FileInputStream fis = new FileInputStream(objRepo);
-		Properties pro = new Properties();
-		pro.load(fis);
+		objRepo = new File("ObjectRepository.properties");
+		dataRepo = new File("DataRepository.properties");
+		
+		fisObject = new FileInputStream(objRepo);
+		fisData = new FileInputStream(dataRepo);
+		
+		proObject = new Properties();
+		proData = new Properties();
+		
+		proObject.load(fisObject);
+		proData.load(fisData);
+		
 		System.out.println("Loaded file");
 		Thread.sleep(5000);
 
-		WebElement btnLoginLaunch = driver.findElement(By.xpath(pro.getProperty("btnLoginLaunch.xpath")));
+		WebElement btnLoginLaunch = driver.findElement(By.xpath(proObject.getProperty("btnLoginLaunch.xpath")));
 		btnLoginLaunch.click();
-		Thread.sleep(5000);
+		Thread.sleep(10000);
 
-		WebElement emailField = driver.findElement(By.xpath(pro.getProperty("emailField.xpath")));
-		emailField.sendKeys(pro.getProperty("email"));
+		WebElement emailField = driver.findElement(By.xpath(proObject.getProperty("emailField.xpath")));
+		emailField.sendKeys(proData.getProperty("emailLogin"));
 		Thread.sleep(5000);
 		System.out.println("Entered email");
 
-		WebElement pwdField = driver.findElement(By.xpath(pro.getProperty("pwdField.xpath")));
-		pwdField.sendKeys(pro.getProperty("pwd"));
+		WebElement pwdField = driver.findElement(By.xpath(proObject.getProperty("pwdField.xpath")));
+		pwdField.sendKeys(proData.getProperty("pwdLogin"));
 		Thread.sleep(5000);
 		System.out.println("Entered pwd");
 
-		WebElement login = driver.findElement(By.xpath(pro.getProperty("btnLogin.xpath")));
+		WebElement login = driver.findElement(By.xpath(proObject.getProperty("btnLogin.xpath")));
 		login.click();
+		Thread.sleep(20000);
+		System.out.println("Click Login");
+		
+		WebElement lcShop = driver.findElement(By.xpath("//android.widget.ImageView[@bounds = '[63,107][156,210]']"));
+		lcShop.isDisplayed();
+		System.out.println(""+lcShop.isDisplayed());
 		Thread.sleep(10000);
 	}
 
