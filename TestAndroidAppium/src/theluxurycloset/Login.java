@@ -9,12 +9,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
 
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidElement;
-
 public class Login {
 	WebDriver driver;
-	AppiumDriver<AndroidElement> driver2;
 
 	@BeforeClass
 	public void setUp() throws MalformedURLException {
@@ -27,10 +23,9 @@ public class Login {
 		capabilities.setCapability("platformName", "Android");
 
 		capabilities.setCapability("appPackage", "com.theluxurycloset.tclapplication.dev");
-		// This package name of your app (you can get it from apk info app)
 		capabilities.setCapability("appActivity",
 				"com.theluxurycloset.tclapplication.activity.SplashScreen.SplashActivity");
-		capabilities.setCapability("unicodeKeyboard", "true");
+		//capabilities.setCapability("unicodeKeyboard", "true");
 		driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
 
