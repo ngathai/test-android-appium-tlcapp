@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="theluxurycloset.FirstCaseTLC">
+      <class name="theluxurycloset.ReadObjectRepository">
         <methods>
-          <include name="login"/>
-          <include name="setUp"/>
-          <include name="teardown"/>
+          <include name="afterTest"/>
+          <include name="beforeTest"/>
+          <include name="readObjectToLogin"/>
         </methods>
-      </class> <!-- theluxurycloset.FirstCaseTLC -->
+      </class> <!-- theluxurycloset.ReadObjectRepository -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
